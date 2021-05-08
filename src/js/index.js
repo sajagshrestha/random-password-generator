@@ -2,7 +2,7 @@ const range = document.getElementById("length-range");
 const number = document.getElementById("length-number");
 const generateButton = document.querySelector(".generate-button");
 const passwordContainer = document.querySelector(".generated-password");
-
+const clipboard = document.querySelector(".clipboard");
 //character code array
 const UPPERCASE = genrateNumbersArray(65, 90);
 const LOWERCASE = genrateNumbersArray(97, 122);
@@ -27,15 +27,14 @@ function generatePassword(
 	passwordLength,
 	includeLowerCase,
 	includeUppercase,
-	includeSymbols,
-	includeNumbers
+	includeNumbers,
+	includeSymbols
 ) {
 	let characterCodes = [];
 	if (includeLowerCase) characterCodes = characterCodes.concat(LOWERCASE);
 	if (includeUppercase) characterCodes = characterCodes.concat(UPPERCASE);
 	if (includeNumbers) characterCodes = characterCodes.concat(NUMBERS);
 	if (includeSymbols) characterCodes = characterCodes.concat(SYMBOLS);
-	console.log(characterCodes);
 
 	let password = "";
 	for (let i = 0; i < passwordLength; i++) {
@@ -54,7 +53,7 @@ function updatePassword() {
 	const includeLowerCase = document.getElementById("lowercase").checked;
 	const includeNumbers = document.getElementById("numbers").checked;
 	const includeSymbols = document.getElementById("symbols").checked;
-	passwordContainer.innerHTML = generatePassword(
+	passwordContainer.innerText = generatePassword(
 		passwordLength,
 		includeLowerCase,
 		includeUppercase,
@@ -62,6 +61,17 @@ function updatePassword() {
 		includeSymbols
 	);
 }
+//copy password to clipboard
+function copyToClipboard(string) {
+	const element = document.createElement("textarea");
+	element.value = string;
+	document.body.appendChild(element);
+	element.select();
+	document.execCommand("copy");
+	document.body.removeChild(element);
+	alert("Password copied to clipboard!");
+}
+
 //bind range and number
 range.value = number.value = passwordLength;
 
@@ -83,3 +93,8 @@ generateButton.addEventListener("click", updatePassword);
 
 //password generate on range slider
 range.addEventListener("input", updatePassword);
+
+//clipboard
+clipboard.addEventListener("click", () =>
+	copyToClipboard(passwordContainer.innerText)
+);
