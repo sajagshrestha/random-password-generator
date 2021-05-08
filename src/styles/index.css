@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+@import "reset.css";
+@import "passwordGenerator.css";
+:root {
+	font-size: 16px;
+	font-family: "Roboto Mono", monospace;
+	--primary-background: #161616;
+	--primary-color: #f1f1f1;
+
+	--generator-background: #1f1f1f;
+	--generated-password-background: #3b3b3b;
+
+	--button-background: #4b92e7;
+	--button-background-hover: #4986cf;
+}
+
+body {
+	min-height: 100vh;
+	background-color: var(--primary-background);
+	color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

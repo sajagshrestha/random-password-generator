@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Random Password Generator</title>
+		<link rel="stylesheet" href="./src/styles/index.css" />
+	</head>
+	<body>
+		<div class="generator-container">
+			<div class="generator-container-title">
+				<h1>Random Password Generator</h1>
+			</div>
+			<div class="generator-body">
+				<div class="customize">
+					<label for="length" class="label">Length</label>
+					<input
+						type="range"
+						class="checkbox"
+						name="length"
+						id="length-range"
+						min="8"
+						max="20"
+					/>
+					<input
+						type="number"
+						name="length"
+						id="length-number"
+						min="8"
+						max="20"
+					/>
+				</div>
+				<div class="customize">
+					<label for="uppercase" class="label"
+						>Uppercase Letters</label
+					>
+					<input
+						type="checkbox"
+						class="checkbox"
+						name="uppercase"
+						id="uppercase"
+						checked="true"
+					/>
+				</div>
+				<div class="customize">
+					<label for="lowercase" class="label"
+						>Lowercase Letters</label
+					>
+					<input
+						type="checkbox"
+						class="checkbox"
+						name="lowercase"
+						id="lowercase"
+					/>
+				</div>
+				<div class="customize">
+					<label for="number" class="label">Numbers</label>
+					<input
+						type="checkbox"
+						class="checkbox"
+						name="number"
+						id="number"
+					/>
+				</div>
+				<div class="customize">
+					<label for="symbols" class="label">Symbols</label>
+					<input
+						type="checkbox"
+						class="checkbox"
+						name="symbols"
+						id="symbols"
+					/>
+				</div>
+				<div class="generated-password-container customize">
+					<div class="generated-password"></div>
+					<div class="clipboard">
+						<img src="./assets/clipboard.png" alt="clipboard" />
+					</div>
+				</div>
+				<div class="customize">
+					<button class="generate-button">Generate Password</button>
+				</div>
+			</div>
+		</div>
+		<script src="./src/js/index.js"></script>
+	</body>
+</html>
