@@ -9,7 +9,7 @@ const LOWERCASE = genrateNumbersArray(97, 122);
 const NUMBERS = genrateNumbersArray(48, 57);
 const SYMBOLS = genrateNumbersArray(34, 47).concat(genrateNumbersArray(58, 64));
 
-//default password lenght
+//default password length
 let passwordLength = 8;
 
 //generate ASCII code array
@@ -27,14 +27,15 @@ function generatePassword(
 	passwordLength,
 	includeLowerCase,
 	includeUppercase,
-	includeSymbol,
-	includeNumber
+	includeSymbols,
+	includeNumbers
 ) {
 	let characterCodes = [];
 	if (includeLowerCase) characterCodes = characterCodes.concat(LOWERCASE);
 	if (includeUppercase) characterCodes = characterCodes.concat(UPPERCASE);
-	if (includeNumber) characterCodes = characterCodes.concat(NUMBERS);
-	if (includeSymbol) characterCodes = characterCodes.concat(SYMBOLS);
+	if (includeNumbers) characterCodes = characterCodes.concat(NUMBERS);
+	if (includeSymbols) characterCodes = characterCodes.concat(SYMBOLS);
+	console.log(characterCodes);
 
 	let password = "";
 	for (let i = 0; i < passwordLength; i++) {
@@ -42,6 +43,7 @@ function generatePassword(
 			characterCodes[Math.floor(Math.random() * characterCodes.length)];
 		password += String.fromCharCode(characterCode);
 	}
+
 	return password;
 }
 
@@ -50,14 +52,14 @@ function updatePassword() {
 	passwordLength = number.value;
 	const includeUppercase = document.getElementById("uppercase").checked;
 	const includeLowerCase = document.getElementById("lowercase").checked;
-	const includeNumber = document.getElementById("number").checked;
-	const includeSymbol = document.getElementById("symbols").checked;
+	const includeNumbers = document.getElementById("numbers").checked;
+	const includeSymbols = document.getElementById("symbols").checked;
 	passwordContainer.innerHTML = generatePassword(
 		passwordLength,
 		includeLowerCase,
 		includeUppercase,
-		includeNumber,
-		includeSymbol
+		includeNumbers,
+		includeSymbols
 	);
 }
 //bind range and number
@@ -76,7 +78,7 @@ number.addEventListener("input", (e) => {
 	range.value = value;
 });
 
-//password generate on button button
+//password generate on button click
 generateButton.addEventListener("click", updatePassword);
 
 //password generate on range slider
